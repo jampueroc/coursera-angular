@@ -37,9 +37,4 @@ export class HomeComponent implements OnInit {
         new Date(b.airing_start).getTime() - new Date(a.airing_start).getTime());
     return false;
   }
-
-  parseGenres(genres: Genre[]): string{
-    return genres.map(g => g.name).join(', ');
-  }
-
 }

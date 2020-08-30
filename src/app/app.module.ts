@@ -10,6 +10,7 @@ import {JikanService} from './services/jikan.service';
 import {HttpClientModule} from '@angular/common/http';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { DetailsComponent } from './anime/details/details.component';
+import { ItemListComponent } from './anime/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DetailsComponent } from './anime/details/details.component';
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    DetailsComponent
+    DetailsComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,
