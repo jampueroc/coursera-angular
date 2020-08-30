@@ -1,0 +1,26 @@
+<div class="container" *ngIf="anime">
+  <h1>{{anime.title}} <small>{{anime.title_japanese}}</small></h1>
+  <div class="row-cols-1">
+    <a *ngFor="let g of anime.genres" [href]="g.url" class="badge badge-primary mr-2">
+      {{g.name}}
+    </a>
+  </div>
+  <div class="row-cols-1" *ngIf="anime.title_synonyms || anime.title_english">
+    <p>Otros títulos:</p>
+    <ul>
+      <li *ngIf="anime.title_english">{{anime.title_english}}</li>
+      <li *ngFor="let t of anime.title_synonyms">{{t}}</li>
+    </ul>
+  </div>
+  <div class="row-cols-1">
+    {{anime.synopsis}}
+  </div>
+  <div class="row-cols-1">
+    <a [href]="anime.url" class="btn btn-link">
+      Ver más información en MyAnimeList
+    </a>
+    <a [href]="anime.trailer_url" *ngIf="anime.trailer_url" class="btn btn-link">
+      Ver trailer
+    </a>
+  </div>
+</div>

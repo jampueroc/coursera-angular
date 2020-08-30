@@ -1,0 +1,48 @@
+<div class="jumbotron">
+  <h1>App para curso de Angular en Coursera</h1>
+  <p>Hagamos una app de anime! porque soy friki</p>
+</div>
+<div class="container">
+  <div *ngIf="selectedSeason">
+    <h2>{{selectedSeason.season_name}} - {{selectedSeason.season_year}}</h2>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" aria-label="Sizing example input" #input>
+      <div class="input-group-append">
+        <button type="button" [disabled]="input.value && input.value.length > 0"  (click)="filterList(input.value)"
+                class="btn btn-info">Buscar</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-2" *ngFor="let anime of listAnime">
+        <div class="card">
+          <div class="row no-gutters">
+            <div class="col-md-4 border center text-center">
+              <img class="card-img-top " [src]="anime.image_url" alt="">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title">{{anime.title}}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text" style="height: 100px; overflow: auto">
+              {{anime.synopsis}}
+              <small class="text-muted">{{anime.airing_start | date }}</small>
+            </p>
+          </div>
+          <ul class="list-group list-group-flush border">
+            <li class="list-group-item" *ngIf="anime.episodes">Episodios: {{anime.episodes}}</li>
+            <li class="list-group-item" *ngIf="anime.genres">{{parseGenres(anime.genres)}}</li>
+          </ul>
+          <div class="card-footer">
+            <button class="btn btn-block btn-primary"
+                    type="button" [routerLink]="['/anime', anime.mal_id]">Ver detalles</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
