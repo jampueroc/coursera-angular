@@ -5,13 +5,16 @@
 <div class="container">
   <div *ngIf="selectedSeason">
     <h2>{{selectedSeason.season_name}} - {{selectedSeason.season_year}}</h2>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" aria-label="Sizing example input" #input>
-      <div class="input-group-append">
-        <button type="button" [disabled]="input.value && input.value.length > 0"  (click)="filterList(input.value)"
-                class="btn btn-info">Buscar</button>
+    <form>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" aria-label="Sizing example input" #input>
+        <div class="input-group-append">
+          <button type="submit" (click)="filterList(input.value)"
+                  [disabled]="input.value && input.value.length > 0"
+                  class="btn btn-info">Buscar</button>
+        </div>
       </div>
-    </div>
+    </form>
 
     <div class="row">
       <div class="col-md-4 mb-2" *ngFor="let anime of listAnime">
